@@ -1,4 +1,4 @@
-package com.sandipbhattacharya.pingponglite;
+package com.pingpongthegame.pingpong;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,21 +10,21 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
-    Boolean audioState;
-    ImageButton ibAudio;
+    Boolean stateAudio;
+    ImageButton audioIb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        ibAudio = findViewById(R.id.ibAudio);
+        audioIb = findViewById(R.id.ibAudio);
         sharedPreferences = getSharedPreferences("my_pref",0);
-        audioState = sharedPreferences.getBoolean("audioState", true);
-        if(audioState){
-            ibAudio.setImageResource(R.drawable.audio_on);
+        stateAudio = sharedPreferences.getBoolean("audioState", true);
+        if(stateAudio){
+            audioIb.setImageResource(R.drawable.a_on);
         }else{
-            ibAudio.setImageResource(R.drawable.audio_off);
+            audioIb.setImageResource(R.drawable.a_off);
         }
     }
 
@@ -34,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void audioPref(View view) {
-        if(audioState){
-            audioState = false;
-            ibAudio.setImageResource(R.drawable.audio_off);
+        if(stateAudio){
+            stateAudio = false;
+            audioIb.setImageResource(R.drawable.a_off);
         }else{
-            audioState = true;
-            ibAudio.setImageResource(R.drawable.audio_on);
+            stateAudio = true;
+            audioIb.setImageResource(R.drawable.a_on);
         }
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("audioState", audioState);
+        editor.putBoolean("audioState", stateAudio);
         editor.commit();
     }
 }

@@ -39,7 +39,7 @@
             android:id="@+id/ivNewHighest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/new_highest"
+            android:background="@drawable/new_h"
             android:visibility="gone"></ImageView>
 
         <TableLayout

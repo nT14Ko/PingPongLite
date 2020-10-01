@@ -1,4 +1,4 @@
-package com.sandipbhattacharya.pingponglite;
+package com.pingpongthegame.pingpong;
 
 public class Velocity {
     private int x, y;

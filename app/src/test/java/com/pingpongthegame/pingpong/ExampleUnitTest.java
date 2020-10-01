@@ -1,4 +1,4 @@
-package com.sandipbhattacharya.pingponglite;
+package com.pingpongthegame.pingpong;
 
 import org.junit.Test;
 

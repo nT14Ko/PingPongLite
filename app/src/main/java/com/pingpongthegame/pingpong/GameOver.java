@@ -1,4 +1,4 @@
-package com.sandipbhattacharya.pingponglite;
+package com.pingpongthegame.pingpong;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,30 +12,30 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class GameOver extends AppCompatActivity {
 
-    TextView tvPoints;
-    TextView tvHighest;
-    SharedPreferences sharedPreferences;
+    TextView tPoints;
+    TextView tHighest;
+    SharedPreferences preferences;
     ImageView ivNewHighest;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_over);
-        tvPoints = findViewById(R.id.tvPoints);
-        tvHighest = findViewById(R.id.tvHighest);
+        tPoints = findViewById(R.id.tvPoints);
+        tHighest = findViewById(R.id.tvHighest);
         ivNewHighest = findViewById(R.id.ivNewHighest);
         int points = getIntent().getExtras().getInt("points");
-        tvPoints.setText(""+points);
-        sharedPreferences = getSharedPreferences("my_pref", 0);
-        int highest = sharedPreferences.getInt("highest", 0);
+        tPoints.setText(""+points);
+        preferences = getSharedPreferences("my_pref", 0);
+        int highest = preferences.getInt("highest", 0);
         if(points > highest){
             ivNewHighest.setVisibility(View.VISIBLE);
             highest = points;
-            SharedPreferences.Editor editor = sharedPreferences.edit();
+            SharedPreferences.Editor editor = preferences.edit();
             editor.putInt("highest", highest);
             editor.commit();
         }
-        tvHighest.setText(""+highest);
+        tHighest.setText(""+highest);
     }
 
     public void restart(View view) {
